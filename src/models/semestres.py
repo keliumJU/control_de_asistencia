@@ -1,8 +1,16 @@
-from src.config.settings import db
-from src.models.espacios_academicos import EspaciosAcademicos
+from src.models.Modelos import Semestres,db
+from src.dto.semestres_dto import SemestresDTO
+from src.dto.espacios_dto import EspaciosDTO
 
-class Semestres(db.Model):
-    __tablename__='semestres'
-    semestre_id=db.Column(db.Integer,primary_key=True)
-    nombre=db.Column(db.String(25),nullable=False)
-    espacio_academico=db.relationship('EspaciosAcademicos', backref='espacioSemestre')    
+class SemestresModel(Semestres):
+    def json(self):
+        return {
+            'semestre_id':self.semestre_id,
+            'nombre':self.nombre
+        }
+
+    def list_semestre(self):
+        return SemestresModel.query.all()
+
+    def get_semestre(self,id_):
+        return Semestres.query.filter_by(semestre_id=id_).first()

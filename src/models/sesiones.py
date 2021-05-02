@@ -1,12 +1,24 @@
-from src.config.settings import db
-from src.models.asistencia import RegistroAsistencia
-from src.models.estudiantes import Estudiantes
-class Sesiones(db.Model):
-    __tablename__ = 'sesiones'
-    sesion_id=db.Column(db.Integer,primary_key=True)
-    fecha=db.Column(db.Date,nullable=False)
-    hora_ini=db.Column(db.Time,nullable=False)
-    hora_fin=db.Column(db.Time,nullable=False)
-    session=db.relationship('Estudiantes',secondary=RegistroAsistencia,backref=db.backref('asistencia'),lazy='dynamic')
-    espacio_academico_id=db.Column(db.Integer,db.ForeignKey('espacios_academicos.espacio_id'))
+from src.models.Modelos import Sesiones,db
+from src.dto.sesiones_dto import SesionesDTO
+class SesionesModel():
+    def add_sesion(self,sesionesDto:SesionesDTO):
+        sesion=Sesiones(
+            fecha=sesionesDto.fecha,
+            hora_ini=sesionesDto.hora_ini,
+            hora_fin=sesionesDto.hora_end,
+            espacioSesion=sesionesDto.espacios
+        )
+        db.session.add(sesion)
+        db.session.commit()
+    
+    def listar_sesiones(self):
+        return Sesiones.query.all()
 
+    def get_sesion(self, id_):
+        return Sesiones.query.filter_by(sesion_id=id_).first()
+        
+    def update_sesiones(self):
+        pass
+
+    def delete_sesiones(self):
+        pass
