@@ -38,7 +38,7 @@ CREATE TABLE `asistencia` (
 
 LOCK TABLES `asistencia` WRITE;
 /*!40000 ALTER TABLE `asistencia` DISABLE KEYS */;
-INSERT INTO `asistencia` VALUES ('123',1),('12345',1);
+INSERT INTO `asistencia` VALUES ('1234',1),('1111',1),('1234',1),('1111',1),('1234',1),('1111',1),('1234',1),('1111',1),('1007403404',1),('1111',1),('1007403404',1),('1111',1),('1007403404',1),('1007403404',1),('1007403404',1),('1007403404',1),('1007403404',1),('1111',1),('1007403404',1),('1111',1),('1007403404',1),('1007403404',1),('1007403404',1),('1007403404',1),('1007403404',1),('1234',2),('1234',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1111',4),('1007403404',1),('1111',4),('1111',4),('1111',4),('1007403404',5),('1234',4),('1007403404',4),('1111',4);
 /*!40000 ALTER TABLE `asistencia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,7 +56,7 @@ CREATE TABLE `espacios_academicos` (
   PRIMARY KEY (`espacio_id`),
   KEY `semestre_id` (`semestre_id`),
   CONSTRAINT `espacios_academicos_ibfk_1` FOREIGN KEY (`semestre_id`) REFERENCES `semestres` (`semestre_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `espacios_academicos` (
 
 LOCK TABLES `espacios_academicos` WRITE;
 /*!40000 ALTER TABLE `espacios_academicos` DISABLE KEYS */;
-INSERT INTO `espacios_academicos` VALUES (1,'math',1),(2,'Algoritmos',1);
+INSERT INTO `espacios_academicos` VALUES (1,'math',1),(2,'algebra I',2),(3,'Algorithms',1),(4,'IA',10);
 /*!40000 ALTER TABLE `espacios_academicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +92,7 @@ CREATE TABLE `espacios_academicos_estudiante` (
 
 LOCK TABLES `espacios_academicos_estudiante` WRITE;
 /*!40000 ALTER TABLE `espacios_academicos_estudiante` DISABLE KEYS */;
-INSERT INTO `espacios_academicos_estudiante` VALUES ('123',1),('12345',1),('123',2);
+INSERT INTO `espacios_academicos_estudiante` VALUES ('1007403404',1),('1007403404',2),('1007403404',3),('1111',1),('1111',3),('1234',1),('1111',2),('1234',2),('1007403404',3),('1111',3),('1234',3),('1007403404',4),('1111',4),('1234',4);
 /*!40000 ALTER TABLE `espacios_academicos_estudiante` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +119,7 @@ CREATE TABLE `estudiantes` (
 
 LOCK TABLES `estudiantes` WRITE;
 /*!40000 ALTER TABLE `estudiantes` DISABLE KEYS */;
-INSERT INTO `estudiantes` VALUES ('123','juan','ape','123','est@gamil.com'),('12345','pedro','ape','123','est@gamil.com');
+INSERT INTO `estudiantes` VALUES ('1007403404','Kelium','Jean','3203719763','juan@gmail.com'),('1111','federico','perez','3213','fepe@gamil.com'),('1234','rual','rodriguez','321','raul@gmail.com');
 /*!40000 ALTER TABLE `estudiantes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +134,7 @@ CREATE TABLE `semestres` (
   `semestre_id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(25) NOT NULL,
   PRIMARY KEY (`semestre_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +143,7 @@ CREATE TABLE `semestres` (
 
 LOCK TABLES `semestres` WRITE;
 /*!40000 ALTER TABLE `semestres` DISABLE KEYS */;
-INSERT INTO `semestres` VALUES (1,'semestre 1');
+INSERT INTO `semestres` VALUES (1,'Semestre 1'),(2,'Semestre 2'),(3,'Semestre 3'),(4,'Semestre 4'),(5,'Semestre 5'),(6,'Semestre 6'),(7,'Semestre 7'),(8,'Semestre 8'),(9,'Semestre 9'),(10,'Semestre 10');
 /*!40000 ALTER TABLE `semestres` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +163,7 @@ CREATE TABLE `sesiones` (
   PRIMARY KEY (`sesion_id`),
   KEY `espacio_academico_id` (`espacio_academico_id`),
   CONSTRAINT `sesiones_ibfk_1` FOREIGN KEY (`espacio_academico_id`) REFERENCES `espacios_academicos` (`espacio_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `sesiones` (
 
 LOCK TABLES `sesiones` WRITE;
 /*!40000 ALTER TABLE `sesiones` DISABLE KEYS */;
-INSERT INTO `sesiones` VALUES (1,'2021-05-12','23:14:22','23:14:28',1),(2,'2021-05-12','23:14:22','23:14:28',2);
+INSERT INTO `sesiones` VALUES (1,'2021-05-03','05:56:00','08:54:00',1),(2,'2021-05-04','06:54:00','08:59:00',2),(3,'2021-05-05','11:20:00','01:20:00',NULL),(4,'2021-05-06','09:22:00','00:20:00',3),(5,'2021-05-04','10:52:00','02:50:00',4);
 /*!40000 ALTER TABLE `sesiones` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -185,4 +185,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-28 23:37:51
+-- Dump completed on 2021-05-02 11:27:56
